@@ -1,7 +1,3 @@
-import com.sun.xml.internal.ws.api.pipe.ClientTubeAssemblerContext;
-import jdk.internal.util.xml.impl.Input;
-import sun.applet.Main;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,7 +11,7 @@ public class SimpASM {
             System.out.println("java SimpASM [input file name] [output file name]");
             return;
         }
-        Assembler assembler = new Assembler(Main.class.getResourceAsStream("/simpu.scheme"));
+        Assembler assembler = new Assembler(SimpASM.class.getResourceAsStream("/simpu.scheme"));
         FileInputStream stream = null;
         try {
             stream = new FileInputStream(args[0]);
@@ -36,7 +32,7 @@ public class SimpASM {
             System.out.println("Bad output file name.");
         }
         if (codes != null) {
-            Scanner scanner = new Scanner(Main.class.getResourceAsStream("/template.v"));
+            Scanner scanner = new Scanner(SimpASM.class.getResourceAsStream("/template.v"));
             String line = scanner.nextLine();
             while (!line.equals("{MEMORY}")){
                 printStream.println(line);
