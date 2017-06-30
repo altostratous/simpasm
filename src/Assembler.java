@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -39,6 +40,7 @@ public class Assembler {
         FileInputStream inputStream = new FileInputStream(fileName);
         Scanner scanner = new Scanner(inputStream);
         ArrayList<String> codes = new ArrayList<>();
+        if (! scanner.hasNext()) return codes;
         String firstToken = scanner.next();
         int codeLine = 0;
         HashMap<String, Integer> symbolTable = new HashMap<>();
@@ -72,8 +74,15 @@ public class Assembler {
                 codes.add(instruction.code(scanner, symbolTable));
                 if (scanner.hasNextLine())
                     scanner.nextLine();
+                codeLine++;
             }
-        } catch (Exception ex) {
+        }
+        catch (NoSuchElementException elementException) {
+            System.out.println("Syntax error at line " + (codeLine + 1) + ": Unfinished statement at the end.");
+            // ex.printStackTrace();
+            return null;
+        }
+        catch (Exception ex) {
             System.out.println("Syntax error at line " + (codeLine + 1) + ": " + ex.getMessage());
             // ex.printStackTrace();
             return null;
