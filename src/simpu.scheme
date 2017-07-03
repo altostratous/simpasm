@@ -7,7 +7,7 @@
 00111	MAX     R1  R2  R3              Max	                        R1 = Max ( R2 , R3 )
 01000	SLT     R1  R2  R3              Set on Less Than	        if ( R2 < R3 ) then R1 = 1 , else R1 = 0
 01001	MUL     R1  R2  R3  R4          Multiply	                {R1 , R2} = R3 × R4
-01010	MOV     R1  R2  R3              Move	                    R1 = R2
+01010	MOV     R1  R2                  Move	                    R1 = R2
 01011	ADDNDR  R1  R2  R3              Add Indirect	            R1 = Mem[R2] + Mem[R3]
 01100	LUI     R1  I                   Load Upper Immediate	    R1[31:16] = Imm , R1[15:0] = 0x0000
 01101	ADDI    R1  R2  I               Add Immediate	            R1 = R2 + SE(Imm)
@@ -20,3 +20,4 @@
 10100	LW      R1  I/L                 Load Word	                R1 = Mem[Address]
 10101	ADDM    R1  R2  I/L             Add Memory	                R1 = R2 + Mem[Address]
 10110	SW      R1  I/L                 Store Word	                Mem[Address]  R1
+11011   SWNDR   R2  R3                  Store Indirect              Mem[R2} = R1
