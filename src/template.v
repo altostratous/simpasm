@@ -6,7 +6,7 @@ module instmemory( write, addr, datain, dataout, clk, reset);
 	
 	reg[31:0] mem[255 : 0];
 	
-	assign dataout<= mem[addr];
+	assign dataout = mem[addr];
 	
 	always @(posedge clk) begin
 		if(reset) begin
