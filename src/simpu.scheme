@@ -20,4 +20,4 @@
 10100	LW      R1  I/L                 Load Word	                R1 = Mem[Address]
 10101	ADDM    R1  R2  I/L             Add Memory	                R1 = R2 + Mem[Address]
 10110	SW      R1  I/L                 Store Word	                Mem[Address]  R1
-11011   SWNDR   R2  R3                  Store Indirect              Mem[R2} = R1
+11011   SWNDR   R2  R3                  Store Indirect              Mem[R2] = R3
